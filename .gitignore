@@ -1218,3 +1218,5 @@ afpdbCSV/t97.csv
 afpdbCSV/t98.csv
 afpdbCSV/t99.csv
 io.pyc
+wfdb.pyc
+.vscode/settings.json
