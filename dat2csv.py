@@ -15,7 +15,7 @@ records = [f for f in listdir(dir) if isfile(join(dir, f)) if(f.find('.dat') != 
 for r in records:
 	# print(r)
 	# --> Create Csv files
-	command = 'rdsamp -r ' + dir + r[:-4] + ' -c -H -f 0 -v >' + dir_out + r[:-4] + '.csv'
+	command = 'rdsamp -r ' + dir + r[:-4] + ' -c -H -f 0 -t 10 -v>' + dir_out + r[:-4] + '.csv'
 	print(command)
 	system(command)
 	#  --> Create annotation files
