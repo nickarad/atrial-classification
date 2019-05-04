@@ -29,38 +29,14 @@ def load_data():
 
         j = j + 1
 
-
     return y,x
 
+# y,x = load_data()
+# np.save('x_data.npy', x)
+# np.save('y_data.npy', y)
+# print(x[199])
+# print(y[199])
 
-y,x = load_data()
-np.save('x_data.npy', x)
-np.save('y_data.npy', y)
-print(x[199])
-print(y[199])
-
-# dir = 'afpdbCSV/'
-# records = [f for f in listdir(dir) if isfile(join(dir, f)) if(f.find('.csv') != -1)]
-# records.sort() 
-# # r = records[0:2]
-# r = records[0]
-# print(r)
-# ecg = pd.read_csv(dir + r, index_col=0)
-# ecg = ecg.values.tolist()
-
-
-# x = np.zeros((1,1280,2))
-# print(x)
-# print(x.shape)
-# i = 0
-# for t in ecg:
-#     # print(i,t[1])
-#     x[0][i][0] = t[0]
-#     x[0][i][1] = t[1]
-#     print(i,x[0][i][0],x[0][i][1])
-#     i = i+1
-# # print(ecg0)
-# # print(ecg1)
 
    
 
