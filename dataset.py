@@ -1,4 +1,5 @@
-# import tensorflow as tf 
+import tensorflow as tf 
+from tensorflow import keras
 import pandas as pd
 import numpy as np
 from os import listdir
@@ -26,17 +27,22 @@ def load_data():
             x[j][i][1] = t[1]
             # print(i,x[j][i][0],x[j][i][1])
             i = i+1
-
+        # x[j,:,0] = tf.keras.utils.normalize(x[j,:,0], axis = 1)
         j = j + 1
-
+    # ====== Normalize Data =======
+    x[:,:,0] = tf.keras.utils.normalize(x[:,:,0], axis = 1)
+    x[:,:,1] = tf.keras.utils.normalize(x[:,:,1], axis = 1)
     return y,x
 
 # y,x = load_data()
 # np.save('x_data.npy', x)
 # np.save('y_data.npy', y)
-# print(x[199])
-# print(y[199])
+# print(x[0])
+# print(y[0])
 
-
+# print(x[0,:,0])
+# plt.plot(x[0,:,1])
+# plt.grid(color='r', linestyle='--', linewidth=0.3)
+# plt.show()
    
 
