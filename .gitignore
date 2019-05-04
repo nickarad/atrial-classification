@@ -1220,3 +1220,10 @@ afpdbCSV/t99.csv
 io.pyc
 wfdb.pyc
 .vscode/settings.json
+labels.pyc
+.idea/AFDB.iml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
