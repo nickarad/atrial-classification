@@ -25,8 +25,7 @@ def create_model():
     # optimizer = tf.keras.optimizers.SGD(lr=0.001, momentum=0.5)
     # model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     model.compile(optimizer=tf.keras.optimizers.Adam(),
-                  loss=tf.keras.losses.sparse_categorical_crossentropy,
-                  metrics=['accuracy'])
+                  loss='binary_crossentropy',metrics=['accuracy'])
     
     return model
 
