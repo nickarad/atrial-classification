@@ -22,11 +22,11 @@ def create_model():
         tf.keras.layers.Dense(1,kernel_initializer='normal', activation=tf.nn.softmax)
     ])
 
-    optimizer = tf.keras.optimizers.SGD(lr=0.001, momentum=0.5)
-    model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
-    # model.compile(optimizer=tf.keras.optimizers.Adam(),
-    #               loss=tf.keras.losses.sparse_categorical_crossentropy,
-    #               metrics=['accuracy'])
+    # optimizer = tf.keras.optimizers.SGD(lr=0.001, momentum=0.5)
+    # model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+    model.compile(optimizer=tf.keras.optimizers.Adam(),
+                  loss=tf.keras.losses.sparse_categorical_crossentropy,
+                  metrics=['accuracy'])
     
     return model
 
