@@ -7,11 +7,11 @@ import tensorflow as tf
 
 def create_model():
     model = tf.keras.models.Sequential([
-        tf.keras.layers.Conv1D(filters=512, kernel_size=32, padding='same', kernel_initializer='normal', activation=tf.nn.relu, input_shape=(1280, 2)),
+        tf.keras.layers.Conv1D(filters=2048, kernel_size=32, padding='same', kernel_initializer='normal', activation=tf.nn.relu, input_shape=(1280, 2)),
         # tf.keras.layers.Dense(4096,kernel_initializer='normal', activation=tf.nn.relu),
-        tf.keras.layers.Conv1D(filters=512, kernel_size=32, padding='same', kernel_initializer='normal', activation=tf.nn.relu),
+        tf.keras.layers.Conv1D(filters=2048, kernel_size=32, padding='same', kernel_initializer='normal', activation=tf.nn.relu),
         tf.keras.layers.Dropout(0.2),
-        tf.keras.layers.Conv1D(filters=256, kernel_size=32, padding='same', kernel_initializer='normal', activation=tf.nn.relu),
+        tf.keras.layers.Conv1D(filters=512, kernel_size=32, padding='same', kernel_initializer='normal', activation=tf.nn.relu),
         tf.keras.layers.Dropout(0.2),
         tf.keras.layers.Conv1D(filters=256, kernel_size=32, padding='same', kernel_initializer='normal', activation=tf.nn.relu),
         tf.keras.layers.MaxPool1D(pool_size=128),
