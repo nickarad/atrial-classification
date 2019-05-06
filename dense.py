@@ -49,7 +49,7 @@ def create_model():
         tf.keras.layers.Dense(2,kernel_initializer='normal', activation=tf.nn.softmax)
     ])
 
-    model.compile(optimizer=tf.keras.optimizers.Adam(0.01),
+    model.compile(optimizer=tf.keras.optimizers.Adam(0.02),
                   loss=tf.keras.losses.sparse_categorical_crossentropy,
                   metrics=['accuracy'])
     return model
