@@ -1432,3 +1432,6 @@ training/p44.csv
 training/p44c.csv
 training/p45.csv
 training/p45c.csv
+data1D.pyc
+dense.pyc
+my_model.h5
