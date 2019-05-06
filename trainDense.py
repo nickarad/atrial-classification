@@ -11,10 +11,13 @@ x_train = np.load('x_train.npy')
 y_train = np.load('y_train.npy')
 x_test = np.load('x_test.npy')
 y_test = np.load('y_test.npy')
+# -- Normalise data
+x_train = tf.keras.utils.normalize(x_train, axis = 1)
+x_test = tf.keras.utils.normalize(x_test, axis = 1)
 
 # ************************************* Create Model ***************************************************
 model = dn.create_model()
-model.fit(x_train, y_train, epochs=3)
+model.fit(x_train, y_train, epochs=15)
 # -- model accurancy
 val_loss, val_acc = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
 print(val_loss)  # model's loss (error)

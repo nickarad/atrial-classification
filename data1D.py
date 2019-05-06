@@ -3,8 +3,8 @@ from os import listdir
 from os.path import isfile, join
 import numpy as np
 import matplotlib.pyplot as plt 
-import neurokit as nk
-from biosppy.signals import ecg
+# import neurokit as nk
+# from biosppy.signals import ecg
 import pandas as pd
 
 
