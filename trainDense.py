@@ -16,7 +16,7 @@ x_test = tf.keras.utils.normalize(x_test, axis = 1)
 
 # ************************************* Create Model ***************************************************
 model = dn.create_model()
-history = model.fit(x_train, y_train, epochs=8,validation_data=(x_test, y_test))
+history = model.fit(x_train, y_train, epochs=8,validation_data=(x_test, y_test), batch_size=64)
 # -- model accurancy
 val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
 print(val_loss1)  # model's loss (error)
