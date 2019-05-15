@@ -26,3 +26,5 @@
 
 9. Make predictions with best model (85% accuracy)
     > python predict.py
+
+![alt text](Accuracy.png)
