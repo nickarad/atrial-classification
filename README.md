@@ -28,3 +28,4 @@
     > python predict.py
 
 ![alt text](Accuracy.png)
+![alt text](Loss.png)
