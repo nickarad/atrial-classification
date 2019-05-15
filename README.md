@@ -1,3 +1,5 @@
+![alt text](https://d20vrrgs8k4bvw.cloudfront.net/images/courses/logos/logo-color-tensorflow.png)
+
 # Install requirements
     > pip install -r requirements.txt
 
@@ -32,3 +34,5 @@
 
 ![alt text](Accuracy.png)
 ![alt text](Loss.png)
+
+
