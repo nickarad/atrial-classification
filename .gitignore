@@ -2360,3 +2360,8 @@ www.physionet.org/physiobank/database/afpdb/t99.qrs
 www.physionet.org/physiobank/database/afpdb/challenge/index.html
 www.physionet.org/physiobank/database/afpdb/challenge/template-test-1
 www.physionet.org/physiobank/database/afpdb/challenge/template-test-2
+x_train.npy
+x_test.npy
+y_test.npy
+y_train.npy
+dataset.pyc
