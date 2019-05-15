@@ -4,7 +4,7 @@
 # Download Dataset
     > wget -r -np http://www.physionet.org/physiobank/database/afpdb/
 
-# Copy paste afpdb folder here 
+# Copy paste afpdb folder to current directory 
     > sudo mv www.physionet.org/physiobank/database/afpdb .
 
 # Create CSV files 
