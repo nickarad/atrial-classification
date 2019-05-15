@@ -2,8 +2,6 @@ import tensorflow as tf
 import matplotlib.pyplot as plt 
 import numpy as np
 import dense as dn
-from tensorflow import keras
-import data1D as data
 
 # ************************************* Prepare Dataset ************************************************
 x_train = np.load('x_train.npy')
@@ -16,16 +14,16 @@ x_test = tf.keras.utils.normalize(x_test, axis = 1)
 
 # ************************************* Create Model ***************************************************
 model = dn.create_model()
-history = model.fit(x_train, y_train, epochs=8,validation_data=(x_test, y_test), batch_size=64)
+history = model.fit(x_train, y_train, epochs=9,validation_data=(x_test, y_test), batch_size=64)
 # -- model accurancy
 val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
 print(val_loss1)  # model's loss (error)
 print(val_acc1)  # model's accuracy
-while (val_loss1 > 0.35) and (val_acc1 < 0.85):
-    history = model.fit(x_train, y_train, epochs=8,validation_data=(x_test, y_test), batch_size=64)
-    val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
-    print(val_loss1)  # model's loss (error)
-    print(val_acc1)  # model's accuracy
+# while (val_loss1 > 0.35) and (val_acc1 < 0.85):
+#     history = model.fit(x_train, y_train, epochs=8,validation_data=(x_test, y_test), batch_size=64)
+#     val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
+#     print(val_loss1)  # model's loss (error)
+#     print(val_acc1)  # model's accuracy
 # ======================================================================================================
 # Plot the model Accuracy graph (Ideally, it should be Logarithmic shape)
 plt.plot(history.history['acc'],'r',linewidth=2.0, label='Training Accuracy')

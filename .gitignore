@@ -1435,3 +1435,6 @@ training/p45c.csv
 data1D.pyc
 dense.pyc
 my_model.h5
+__pycache__/data1D.cpython-36.pyc
+.idea/dictionaries/nikos.xml
+__pycache__/dense.cpython-36.pyc
