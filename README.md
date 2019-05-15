@@ -1,3 +1,6 @@
+0. Insatall requirements
+    > pip install -r requirements.txt
+
 1. Download Dataset
     > wget -r -np http://www.physionet.org/physiobank/database/afpdb/
 
