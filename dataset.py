@@ -1,48 +1,79 @@
-import tensorflow as tf 
-from tensorflow import keras
-import pandas as pd
-import numpy as np
+import wfdb
 from os import listdir
 from os.path import isfile, join
-import labels as lb
-# from tensorflow import keras
+import numpy as np
 import matplotlib.pyplot as plt 
-  
+# import neurokit as nk
+# from biosppy.signals import ecg
+import pandas as pd
+
+
+
 def load_data():
-    dir = 'afpdbCSV/'
-    records = [f for f in listdir(dir) if isfile(join(dir, f)) if(f.find('.csv') != -1)]
+    # Create Traiining dataset
+    train = 'training/'
+    # test = 'test/'
+    x_train = np.array([])
+    y_train = np.array([])
+    records = [f for f in listdir(train) if isfile(join(train, f)) if(f.find('.csv') != -1)]
     records.sort() 
-    records = records[0:200]
-    print(records)
-    y = lb.get_labels()
-    x = np.zeros((200,1280,2))
-    j = 0
+    counter = 0
     for r in records:
-        ecg = pd.read_csv(dir + r, index_col=0)
-        ecg = ecg.values.tolist()
-        i = 0
-        for t in ecg:
-            # print(i,t[1])
-            x[j][i][0] = t[0]
-            x[j][i][1] = t[1]
-            # print(i,x[j][i][0],x[j][i][1])
-            i = i+1
-        # x[j,:,0] = tf.keras.utils.normalize(x[j,:,0], axis = 1)
-        j = j + 1
-    # ====== Normalize Data =======
-    x[:,:,0] = tf.keras.utils.normalize(x[:,:,0], axis = 1)
-    x[:,:,1] = tf.keras.utils.normalize(x[:,:,1], axis = 1)
-    return y,x
+        if r[0] == 'n':
+            y_train = np.append(y_train,0)
+        elif r[0] =='p':
+            y_train = np.append(y_train,1)
 
-# y,x = load_data()
-# np.save('x_data.npy', x)
-# np.save('y_data.npy', y)
-# print(x[0])
-# print(y[0])
+        test = pd.read_csv(train + r,index_col=0)
+        test = test.values.tolist() # --> convert test dataframe to list
+        x = np.array([])
+        for t in test:
+            # print(t[1])
+            x = np.append(x,t[0])
+        # print(x)
+        x_train = np.append(x_train,x)
+        counter = counter + 1
+    x_train = x_train.reshape(-1, 1280)
+    y_train = y_train.astype(int)
+    # ==================================================================================
+    # Create testing
+    testing = 'test/'
+    x_test = np.array([])
+    y_test = np.array([])
+    records = [f for f in listdir(testing) if isfile(join(testing, f)) if(f.find('.csv') != -1)]
+    records.sort() 
+    counter = 0
+    for r in records:
+        if r[0] == 'n':
+            y_test = np.append(y_test,0)
+        elif r[0] =='p':
+            y_test = np.append(y_test,1)
 
-# print(x[0,:,0])
-# plt.plot(x[0,:,1])
-# plt.grid(color='r', linestyle='--', linewidth=0.3)
-# plt.show()
-   
+        test = pd.read_csv(testing + r,index_col=0)
+        test = test.values.tolist() # --> convert test dataframe to list
+        x = np.array([])
+        for t in test:
+            # print(t[1])
+            x = np.append(x,t[0])
+        # print(x)
+        x_test = np.append(x_test,x)
+        counter = counter + 1
+    x_test = x_test.reshape(-1, 1280)
+    y_test = y_test.astype(int)
+
+    return x_train,y_train,x_test,y_test
+
+
+# x_train,y_train,x_test,y_test = load_data()
+# print(x_train.shape)
+# print(y_train.shape)
+# print(x_test.shape)
+# print(y_test.shape)
+
+# np.save('x_train.npy', x_train)
+# np.save('y_train.npy', y_train)
+# np.save('x_test.npy', x_test)
+# np.save('y_test.npy', y_test)
+
+
 
