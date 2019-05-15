@@ -37,7 +37,9 @@
 
 ![alt text](Accuracy.png)
 ![alt text](Loss.png)
+# Normal Record
 ![alt text](Normal.png)
+# Abnormal Record
 ![alt text](Abnormal.png)
 
 
