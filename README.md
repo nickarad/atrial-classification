@@ -1,5 +1,8 @@
 ![alt text](https://d20vrrgs8k4bvw.cloudfront.net/images/courses/logos/logo-color-tensorflow.png)
 
+# Install WFDB Software Package
+     Follow instructions in: https://physionet.org/physiotools/wfdb-linux-quick-start.shtml 
+
 # Install requirements
     > pip install -r requirements.txt
 

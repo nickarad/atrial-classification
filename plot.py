@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt 
 # import neurokit as nk
 
-x = np.load('x_data.npy')
+x = np.load('x_train.npy')
 signal = x[199,:,0]
 
 fs = 128
