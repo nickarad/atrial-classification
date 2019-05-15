@@ -1,4 +1,4 @@
-# Insatall requirements
+# Install requirements
     > pip install -r requirements.txt
 
 # Download Dataset
@@ -25,6 +25,7 @@
     > python train.py
 
 # Rename the best model from my_model.h5 to best.h5
+
 
 # Make predictions with best model (85% accuracy)
     > python predict.py
