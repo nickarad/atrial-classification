@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import createmodel as crm
 
-# ************************************* Prepare Dataset ************************************************
+# ************************************* Load Dataset ************************************************
 x_train = np.load('x_train.npy')
 y_train = np.load('y_train.npy')
 x_test = np.load('x_test.npy')
@@ -19,11 +19,7 @@ history = model.fit(x_train, y_train, epochs=9,validation_data=(x_test, y_test),
 val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
 print(val_loss1)  # model's loss (error)
 print(val_acc1)  # model's accuracy
-# while (val_loss1 > 0.35) and (val_acc1 < 0.85):
-#     history = model.fit(x_train, y_train, epochs=8,validation_data=(x_test, y_test), batch_size=64)
-#     val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
-#     print(val_loss1)  # model's loss (error)
-#     print(val_acc1)  # model's accuracy
+
 # ======================================================================================================
 # Plot the model Accuracy graph (Ideally, it should be Logarithmic shape)
 plt.plot(history.history['acc'],'r',linewidth=2.0, label='Training Accuracy')
@@ -57,7 +53,6 @@ fs = 128
 signal = x_test[test]
 Time=np.linspace(0, len(signal)/fs, num=len(signal))
 
-plt.title('Record 13' )
 plt.plot(Time,signal,'-', lw=1.6)
 # plt.grid(True,which='both', color='0.65', linestyle='-')
 plt.grid(b=True, which='major', color='#666666', linestyle='-')

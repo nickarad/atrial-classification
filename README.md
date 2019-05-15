@@ -15,6 +15,8 @@
 
 5. Split manually dataset (afpdbCSV) to training and test:
     * My dataset has 180 training samples (90 normal + 90 abnormal) and   20 testing samples (10 normal + 10 abnormal)
+        n**.csv: Normal Patient  
+        p**.csv  Abnoramal Patient 
 
 6. Create .npy files 
     >  python create_dataset.py
