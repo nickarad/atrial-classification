@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-def create_model():
+def create_model(lr):
     model = tf.keras.models.Sequential([
         tf.keras.layers.Dense(1024,kernel_initializer='normal', activation=tf.nn.relu, input_shape=(1280,)),
         # # tf.keras.layers.Dense(4096,kernel_initializer='normal', activation=tf.nn.relu),
@@ -49,7 +49,7 @@ def create_model():
         tf.keras.layers.Dense(2,kernel_initializer='normal', activation=tf.nn.softmax)
     ])
 
-    model.compile(optimizer=tf.keras.optimizers.Adam(0.02),
+    model.compile(optimizer=tf.keras.optimizers.Adam(lr),
                   loss=tf.keras.losses.sparse_categorical_crossentropy,
                   metrics=['accuracy'])
     return model

@@ -37,5 +37,7 @@
 
 ![alt text](Accuracy.png)
 ![alt text](Loss.png)
+![alt text](Normal.png)
+![alt text](Abnormal.png)
 
 
