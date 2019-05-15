@@ -1,7 +1,7 @@
 import tensorflow as tf 
 import matplotlib.pyplot as plt 
 import numpy as np
-import dense as dn
+import createmodel as crm
 
 # ************************************* Prepare Dataset ************************************************
 x_train = np.load('x_train.npy')
@@ -13,7 +13,7 @@ x_train = tf.keras.utils.normalize(x_train, axis = 1)
 x_test = tf.keras.utils.normalize(x_test, axis = 1)
 
 # ************************************* Create Model ***************************************************
-model = dn.create_model()
+model = crm.create_model()
 history = model.fit(x_train, y_train, epochs=9,validation_data=(x_test, y_test), batch_size=64)
 # -- model accurancy
 val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
