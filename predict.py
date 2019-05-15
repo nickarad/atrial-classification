@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow import keras
-import matplotlib.pyplot as plt
+import ecg_plot as pl
 import numpy as np
 # ================== Load weights from checkpoint and re-evaluate ===========================
 x_test = np.load('x_test.npy')
@@ -16,8 +16,12 @@ print("Restored model, accuracy {:5.2f}%".format(100*acc))
 
 # ================================ Make predictions==========================================
 predictions = new_model.predict(x_test)
-print("prediction:", np.argmax(predictions[9]))
-print("real value:", y_test[9])
+# num = 18
+num = 0
+print("prediction:", np.argmax(predictions[num]))
+print("real value:", y_test[num])
+pl.ecg_plot(x_test[num])
 
 
 # ============================================================================================
+
