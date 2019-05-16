@@ -10,7 +10,7 @@
     > wget -r -np http://www.physionet.org/physiobank/database/afpdb/
 
 # Copy paste afpdb folder to current directory 
-    > sudo mv www.physionet.org/physiobank/database/afpdb .
+    > mv www.physionet.org/physiobank/database/afpdb .
 
 # Create CSV files 
     > python dat2csv.py
@@ -30,7 +30,7 @@
     > python train.py
 
 # Rename the best model from my_model.h5 to best.h5
-
+     
 
 # Make predictions with best model (85% accuracy)
     > python predict.py
