@@ -32,7 +32,7 @@
 # Rename the best model from my_model.h5 to best.h5
      
 
-# Make predictions with best model (85% accuracy)
+# Make predictions with best model (90% accuracy)
     > python predict.py
 
 ![alt text](Accuracy.png)
