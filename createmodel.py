@@ -3,7 +3,7 @@ import tensorflow as tf
 def create_model(lr):
     dp = 0.5 # define droppout parametre
     model = tf.keras.models.Sequential([
-        tf.keras.layers.Dense(1024,kernel_initializer='normal', activation=tf.nn.relu, input_shape=(1280,)),
+        tf.keras.layers.Dense(1280,kernel_initializer='normal', activation=tf.nn.relu, input_shape=(1280,)),
         # # tf.keras.layers.Dense(4096,kernel_initializer='normal', activation=tf.nn.relu),
         # tf.keras.layers.Dropout(dp),
 
