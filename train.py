@@ -32,34 +32,34 @@ print(val_acc1)  # model's accuracy
 
 # ======================================================================================================
 # Plot the model Accuracy graph (Ideally, it should be Logarithmic shape)
-plt.plot(history.history['acc'],'r',linewidth=2.0, label='Training Accuracy')
-plt.plot(history.history['val_acc'],'b',linewidth=2.0, label='Testing Accuracy')
-plt.legend(fontsize=18)
-plt.xlabel('Epochs ', fontsize=16)
-plt.ylabel('Accuracy', fontsize=16)
-plt.title('Accuracy Curves', fontsize=16)
-plt.grid(b=True, which='major', color='#666666', linestyle='-')
-plt.minorticks_on()
-plt.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
-plt.show()
+f, ax = plt.subplots(2, sharex=True)
+
+ax[0].plot(history.history['acc'],'r',linewidth=2.0, label='Training Accuracy')
+ax[0].plot(history.history['val_acc'],'b',linewidth=2.0, label='Testing Accuracy')
+ax[0].legend(fontsize=10)
+# ax[0].xlabel('Epochs ', fontsize=16)
+# ax[0].ylabel('Accuracy', fontsize=16)
+ax[0].set(xlabel='Epochs', ylabel='Accuracy')
+ax[0].grid(b=True, which='major', color='#999999', linestyle='-',alpha=0.6)
+ax[0].minorticks_on()
+ax[0].grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
+# plt.show()
 # Plot the model Loss graph (Ideally it should be Exponentially decreasing shape)
-plt.plot(history.history['loss'], 'g', linewidth=2.0, label='Training Loss')
-plt.plot(history.history['val_loss'], 'y', linewidth=2.0, label='Testing Loss')
-plt.legend(fontsize=18)
-plt.xlabel('Epochs ', fontsize=16)
-plt.ylabel('Loss', fontsize=16)
-plt.title('Loss Curves', fontsize=16)
-plt.grid(b=True, which='major', color='#666666', linestyle='-')
-plt.minorticks_on()
-plt.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
-plt.show()
+ax[1].plot(history.history['loss'], 'g', linewidth=2.0, label='Training Loss')
+ax[1].plot(history.history['val_loss'], 'y', linewidth=2.0, label='Testing Loss')
+ax[1].legend(fontsize=10)
+ax[1].set(xlabel='Epochs', ylabel='Loss Curves')
+ax[1].grid(b=True, which='major', color='#999999', linestyle='-',alpha=0.6)
+ax[1].minorticks_on()
+ax[1].grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
+# plt.show()
 # ************************************* Make predictions ***************************************************
 predictions = model.predict(x_test)
 test = 19
 print("prediction:", np.argmax(predictions[test]))
 print("real value:", y_test[test])
-# Plot prediction
 
+# Plot prediction
 signal = x_test[test]
 pl.ecg_plot(signal)
 # ======================================================================================================
