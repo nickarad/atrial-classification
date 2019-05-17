@@ -16,11 +16,14 @@ print("Restored model, accuracy {:5.2f}%".format(100*acc))
 
 # ================================ Make predictions==========================================
 predictions = new_model.predict(x_test)
-# num = 18
-num = 0
-print("prediction:", np.argmax(predictions[num]))
-print("real value:", y_test[num])
-pl.ecg_plot(x_test[num])
+
+for x in range(0,20):
+    num = x
+    # num = 18
+    print(num)
+    print("prediction:", np.argmax(predictions[num]))
+    print("real value:", y_test[num])
+    pl.ecg_plot(x_test[num])
 
 
 # ============================================================================================
