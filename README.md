@@ -34,6 +34,8 @@
 
 # Make predictions with best model (90% accuracy)
     > python predict.py
+# Tensoarboard
+    > tensorboard --logdir=logs/
 
 ![alt text](Accuracy.png)
 ![alt text](Loss.png)
