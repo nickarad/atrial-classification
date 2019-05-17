@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import createmodel as crm
 import ecg_plot as pl
+from tensorflow.keras.callbacks import TensorBoard
+
+NAME = "atrial"
+tensorboard = TensorBoard(log_dir="logs/{}".format(NAME))
 
 # ************************************* Load Dataset ************************************************
 x_train = np.load('x_train.npy')
@@ -18,7 +22,7 @@ learn_rate = 0.02 # Define learning rate
 ep = 9 # Number of epochs
 batch = 64# define batch size
 model = crm.create_model(learn_rate)
-history = model.fit(x_train, y_train, epochs=ep,validation_data=(x_test, y_test), batch_size=batch)
+history = model.fit(x_train, y_train, epochs=ep,validation_data=(x_test, y_test), batch_size=batch, callbacks=[tensorboard])
 # -- model accurancy
 val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
 print(val_loss1)  # model's loss (error)
