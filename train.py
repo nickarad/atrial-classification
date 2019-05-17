@@ -5,6 +5,8 @@ import createmodel as crm
 import ecg_plot as pl
 from tensorflow.keras.callbacks import TensorBoard
 
+# ************************************* Tensorboard ************************************************
+
 NAME = "atrial"
 tensorboard = TensorBoard(log_dir="logs/{}".format(NAME))
 
