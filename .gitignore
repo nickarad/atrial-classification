@@ -2372,3 +2372,5 @@ logs/atrial/events.out.tfevents.1558095089.nikos
 logs/atrial/events.out.tfevents.1558095173.nikos
 logs/atrial/events.out.tfevents.1558095249.nikos
 .idea/AF-Classification.iml
+logs
+
