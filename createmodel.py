@@ -1,7 +1,5 @@
 import tensorflow as tf
-from keras.models import Sequential
-from keras.layers import Dense, Activation, Dropout, Conv2D, MaxPooling2D, Flatten, LSTM
-import keras
+
 
 def create_model(lr):
     dp = 0.2 # define droppout parametre

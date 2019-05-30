@@ -37,8 +37,8 @@
 # Tensoarboard
     > tensorboard --logdir=logs/
 
-![alt text](Accuracy.png)
-![alt text](Loss.png)
+![alt text](90.png)
+
 # Normal Record
 ![alt text](Normal.png)
 # Abnormal Record
