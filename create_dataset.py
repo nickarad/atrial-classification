@@ -1,13 +1,13 @@
 import dataset as ds 
 import numpy as np
 
-x_train,y_train,x_test,y_test = ds.load_data()
-print(x_train.shape)
-print(y_train.shape)
-print(x_test.shape)
-print(y_test.shape)
+x_data,y_data = ds.load_data()
+print(x_data.shape)
+print(y_data.shape)
+# print(x_test.shape)
+# print(y_test.shape)
 
-np.save('x_train.npy', x_train)
-np.save('y_train.npy', y_train)
-np.save('x_test.npy', x_test)
-np.save('y_test.npy', y_test)
+np.save('x_data.npy', x_data)
+np.save('y_data.npy', y_data)
+# np.save('x_test.npy', x_test)
+# np.save('y_test.npy', y_test)

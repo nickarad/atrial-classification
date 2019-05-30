@@ -2,6 +2,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt 
 import numpy as np
 import createmodel as crm
+import pandas as pd
 import ecg_plot as pl
 from tensorflow.keras.callbacks import TensorBoard
 
@@ -11,20 +12,31 @@ NAME = "atrial"
 tensorboard = TensorBoard(log_dir="logs/{}".format(NAME))
 
 # ************************************* Load Dataset ************************************************
-x_train = np.load('x_train.npy')
-y_train = np.load('y_train.npy')
-x_test = np.load('x_test.npy')
-y_test = np.load('y_test.npy')
+x_data = np.load('x_data.npy')
+y_data = np.load('y_data.npy')
+train = 0.7
+size = 200
+x_train = x_data[0:int(train * size)]
+y_train = y_data[0:int(train * size)]
+x_test = x_data[int(train * size):size]
+y_test = y_data[int(train * size):size]
+print(x_data.shape)
+print(y_data.shape)
+print(x_train.shape)
+print(y_train.shape)
+print(x_test.shape)
+print(y_test.shape)
 # -- Normalise data
 x_train = tf.keras.utils.normalize(x_train, axis = 1)
 x_test = tf.keras.utils.normalize(x_test, axis = 1)
 
 # ************************************* Create Model ***************************************************
-learn_rate = 0.02 # Define learning rate
-ep = 9 # Number of epochs
-batch = 64# define batch size
+learn_rate = 0.01 # Define learning rate
+ep = 20 # Number of epochs
+batch = 128# define batch size
 model = crm.create_model(learn_rate)
 history = model.fit(x_train, y_train, epochs=ep,validation_data=(x_test, y_test), batch_size=batch, callbacks=[tensorboard])
+pd.DataFrame(history.history).to_csv(path_or_buf='logs/History.csv')
 # -- model accurancy
 val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
 print(val_loss1)  # model's loss (error)
