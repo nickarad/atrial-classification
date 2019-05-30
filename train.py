@@ -32,10 +32,10 @@ x_test = tf.keras.utils.normalize(x_test, axis = 1)
 
 # ************************************* Create Model ***************************************************
 learn_rate = 0.01 # Define learning rate
-ep = 20 # Number of epochs
-batch = 128# define batch size
+ep = 15 # Number of epochs
+batch = 16 # define batch size
 model = crm.create_model(learn_rate)
-history = model.fit(x_train, y_train, epochs=ep,validation_data=(x_test, y_test), batch_size=batch, callbacks=[tensorboard])
+history = model.fit(x_train, y_train, epochs=ep,validation_data=(x_test, y_test), callbacks=[tensorboard])
 pd.DataFrame(history.history).to_csv(path_or_buf='logs/History.csv')
 # -- model accurancy
 val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
