@@ -39,8 +39,9 @@ history = model.fit(x_train, y_train, epochs=ep,validation_data=(x_test, y_test)
 pd.DataFrame(history.history).to_csv(path_or_buf='logs/History.csv')
 # -- model accurancy
 val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
-print(val_loss1)  # model's loss (error)
-print(val_acc1)  # model's accuracy
+# print(val_loss1)  # model's loss (error)
+print("Validation accuracy {:5.2f}%".format(100*val_acc1))
+# print(val_acc1)  # model's accuracy
 
 # ======================================================================================================
 # Plot the model Accuracy graph (Ideally, it should be Logarithmic shape)
