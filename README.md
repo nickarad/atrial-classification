@@ -24,7 +24,8 @@
 # Create Neural Network model and train it 
     > python train.py
 
-# Rename the best model from my_model.h5 to best.h5
+# Best Model
+     Rename the best model from my_model.h5 to best.h5
      
 
 # Make predictions with best model (90% accuracy)
