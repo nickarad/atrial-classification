@@ -17,12 +17,7 @@
 
 # Create training and test dataset
     > mkdir training test
-
-# Split manually dataset (afpdbCSV) to training and test:
-    * My dataset has 180 training samples (90 normal + 90 abnormal) and   20 testing samples (10 normal + 10 abnormal)
-        n**.csv: Normal Patient  
-        p**.csv  Abnoramal Patient 
-
+    
 # Create .npy files 
     >  python create_dataset.py
 
@@ -36,7 +31,7 @@
     > python predict.py
 # Tensoarboard
     > tensorboard --logdir=logs/
-
+# Accuracy & Loss
 ![alt text](90.png)
 
 # Normal Record
