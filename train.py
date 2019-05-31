@@ -17,16 +17,36 @@ x_data = np.load('x_data.npy')
 y_data = np.load('y_data.npy')
 train = 0.7
 size = 200
-x_train = x_data[0:int(train * size)]
-y_train = y_data[0:int(train * size)]
-x_test = x_data[int(train * size):size]
-y_test = y_data[int(train * size):size]
+mid = size / 2
+
+x_train = np.array([])
+x_train = np.append(x_train,x_data[:int(train * mid)])
+x_train = np.append(x_train,x_data[mid:mid + int(train * mid)])
+x_train = x_train.reshape(-1, 1280)
+
+y_train = np.array([])
+y_train = np.append(y_train,y_data[:int(train * mid)])
+y_train = np.append(y_train,y_data[mid:mid + int(train * mid)])
+y_train = y_train.astype(int)
+
+x_test = np.array([])
+x_test = np.append(x_test,x_data[int(train * mid):mid])
+x_test = np.append(x_test,x_data[mid + int(train * mid):size])
+x_test = x_test.reshape(-1, 1280)
+
+y_test = np.array([])
+y_test = np.append(y_test,y_data[int(train * mid):mid])
+y_test = np.append(y_test,y_data[mid + int(train * mid):size])
+y_test = y_test.astype(int)
+
 print(x_data.shape)
 print(y_data.shape)
 print(x_train.shape)
 print(y_train.shape)
 print(x_test.shape)
 print(y_test.shape)
+print(y_train)
+print(y_test)
 
 # ************************************* Normalise data ***************************************************
 x_train = tf.keras.utils.normalize(x_train, axis = 1)
