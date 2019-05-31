@@ -5,6 +5,7 @@ import createmodel as crm
 import pandas as pd
 import ecg_plot as pl
 from tensorflow.keras.callbacks import TensorBoard
+from sklearn.metrics import precision_score
 
 # ************************************* Tensorboard ************************************************
 
@@ -74,8 +75,23 @@ print("real value:", y_test[test])
 
 # Plot prediction
 signal = x_test[test]
-pl.ecg_plot(signal)
+# pl.ecg_plot(signal)
 # ======================================================================================================
+
+# ************************************* Metrics ***************************************************
+y_pred = np.array([])
+for x in range(0,len(predictions)):
+	y_pred = np.append(y_pred,np.argmax(predictions[x]))
+	
+y_pred = y_pred.astype(int)
+
+# The precision is the ratio tp / (tp + fp) where tp is the number of true positives and 
+# fp the number of false positives. The precision is intuitively the ability of the classifier 
+# not to label as positive a sample that is negative.
+# The best value is 1 and the worst value is 0.
+
+precision = precision_score(y_test, y_pred, average='micro') # micro Calculate metrics globally by counting the total true positives, false negatives and false positives.
+print('precision' + precision)
 
 # ************************************* Save Model ***************************************************
 # model.summary()
