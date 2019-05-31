@@ -5,9 +5,9 @@ import createmodel as crm
 import pandas as pd
 import ecg_plot as pl
 from tensorflow.keras.callbacks import TensorBoard
-from sklearn.metrics import precision_score, recall_score
+from sklearn.metrics import precision_score, recall_score, confusion_matrix
 
-# ************************************* Tensorboard ************************************************
+# ************************************* Tensorboard Settings ************************************************
 
 NAME = "atrial"
 tensorboard = TensorBoard(log_dir="logs/{}".format(NAME))
@@ -28,11 +28,11 @@ print(y_train.shape)
 print(x_test.shape)
 print(y_test.shape)
 
-# ************************************* Create Model ***************************************************
+# ************************************* Normalise data ***************************************************
 x_train = tf.keras.utils.normalize(x_train, axis = 1)
 x_test = tf.keras.utils.normalize(x_test, axis = 1)
 
-# ************************************* Normalise data ***************************************************
+# ************************************* Create Model ***************************************************
 learn_rate = 0.01 # Define learning rate
 ep = 15 # Number of epochs
 batch = 16 # define batch size
@@ -41,14 +41,13 @@ model.summary()
 history = model.fit(x_train, y_train, epochs=ep,validation_data=(x_test, y_test), callbacks=[tensorboard])
 pd.DataFrame(history.history).to_csv(path_or_buf='logs/History.csv')
 
-# ************************************* model accurancy ***************************************************
+# ************************************* Model Accurancy ***************************************************
 val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model
 print("Validation accuracy {:5.2f}%".format(100*val_acc1))
 # print(val_acc1)  # model's accuracy
 # print(val_loss1)  # model's loss (error)
 
-# ======================================================================================================
-# Plot the model Accuracy graph (Ideally, it should be Logarithmic shape)
+# ************************************* Plot Accurancy & Loss ***************************************************
 f, ax = plt.subplots(2, sharex=True)
 
 ax[0].plot(history.history['acc'],'r',linewidth=2.0, label='Training Accuracy')
@@ -100,6 +99,17 @@ print("Precision:", precision)
 # Recall = TP/(TP+FN)
 recall = recall_score(y_test, y_pred, average='micro') # micro calculates metrics globally by counting the total true positives, false negatives and false positives.
 print("Recall:", recall) 
+
+# Specificity:
+# Specificity is the correctly -ve labeled by the program to all who are healthy in reality.
+# Specifity answers the following question: Of all the people who are healthy, how many of those did we correctly predict?
+# Specificity = TN/(TN+FP)
+tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
+print(tn, fp, fn, tp)
+specificity = tn / (tn+fp)
+print("Specificity:", specificity) 
+
+# More Details about metrics: https://towardsdatascience.com/accuracy-recall-precision-f-score-specificity-which-to-optimize-on-867d3f11124
 
 # ************************************* Save Model ***************************************************
 model.save('my_model.h5') # Save entire model

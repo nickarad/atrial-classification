@@ -2,7 +2,7 @@ import tensorflow as tf
 from tensorflow import keras
 import ecg_plot as pl
 import numpy as np
-from sklearn.metrics import precision_score, recall_score
+from sklearn.metrics import precision_score, recall_score, confusion_matrix
 # ================== Load weights from checkpoint and re-evaluate ===========================
 x_data = np.load('x_data.npy')
 y_data = np.load('y_data.npy')
@@ -51,5 +51,15 @@ print("Precision:", precision)
 # Recall = TP/(TP+FN)
 recall = recall_score(y_test, y_pred, average='micro') # micro calculates metrics globally by counting the total true positives, false negatives and false positives.
 print("Recall:", recall) 
+
+# Specificity:
+# Specificity is the correctly -ve labeled by the program to all who are healthy in reality.
+# Specifity answers the following question: Of all the people who are healthy, how many of those did we correctly predict?
+# Specificity = TN/(TN+FP)
+tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
+print(tn, fp, fn, tp)
+specificity = tn / (tn+fp)
+print("Specificity:", specificity) 
+
 
 
