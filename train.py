@@ -126,7 +126,8 @@ print("Recall:", recall)
 # Specificity = TN/(TN+FP)
 tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
 print(tn, fp, fn, tp)
-specificity = tn / (tn+fp)
+tn = float(tn)
+specificity = tn / (tn + fp)
 print("Specificity:", specificity) 
 
 # More Details about metrics: https://towardsdatascience.com/accuracy-recall-precision-f-score-specificity-which-to-optimize-on-867d3f11124
