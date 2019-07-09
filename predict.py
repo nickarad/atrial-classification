@@ -58,6 +58,7 @@ print("Recall:", recall)
 # Specificity = TN/(TN+FP)
 tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
 print(tn, fp, fn, tp)
+tn = float(tn)
 specificity = tn / (tn+fp)
 print("Specificity:", specificity) 
 
