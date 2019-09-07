@@ -33,11 +33,11 @@
 ## Tensoarboard
     > tensorboard --logdir=logs/
 ## Accuracy & Loss
-![alt text](90.png)
+![alt text](img/90.png)
 
 ## Normal Record
-![alt text](Normal.png)
+![alt text](img/Normal.png)
 ## Abnormal Record
-![alt text](Abnormal.png)
+![alt text](img/Abnormal.png)
 
 
