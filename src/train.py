@@ -13,8 +13,8 @@ NAME = "atrial"
 tensorboard = TensorBoard(log_dir="logs/{}".format(NAME))
 
 # ************************************* Load Dataset ************************************************
-x_data = np.load('x_data.npy')
-y_data = np.load('y_data.npy')
+x_data = np.load('../data/x_data.npy')
+y_data = np.load('../data/y_data.npy')
 train = 0.7
 size = 200
 mid = size / 2
@@ -133,5 +133,5 @@ print("Specificity:", specificity)
 # More Details about metrics: https://towardsdatascience.com/accuracy-recall-precision-f-score-specificity-which-to-optimize-on-867d3f11124
 
 # ************************************* Save Model ***************************************************
-model.save('my_model.h5') # Save entire model
+model.save('../models/my_model.h5') # Save entire model
 # ======================================================================================================

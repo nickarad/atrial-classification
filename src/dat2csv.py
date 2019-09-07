@@ -3,9 +3,9 @@
 from os import listdir, mkdir, system
 from os.path import isfile, isdir, join, exists
 
-dir = 'afpdb/'#'mitdb/'
+dir = '../afpdb/'#'mitdb/'
 #Create folder
-dir_out = 'afpdbCSV/'
+dir_out = '../afpdbCSV/'
 if not exists(dir_out):
 	mkdir(dir_out)
 

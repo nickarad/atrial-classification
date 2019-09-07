@@ -4,7 +4,7 @@ from os import listdir, mkdir, system
 from os.path import isfile, isdir, join, exists
 
 def get_labels():
-    dir = 'afpdbCSV'
+    dir = '../afpdbCSV'
     classes = ['Normal','Atrial']
     labels = np.array([])
     records = [f for f in listdir(dir) if isfile(join(dir, f)) if(f.find('.csv') != -1)]

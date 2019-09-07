@@ -9,7 +9,7 @@ import pandas as pd
 
 def load_data():
     # Create Traiining dataset
-    train = 'afpdbCSV/'
+    train = '../afpdbCSV/'
     # test = 'test/'
     x_data = np.array([])
     y_data = np.array([])

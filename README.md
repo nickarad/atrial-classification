@@ -12,6 +12,9 @@
 ## Copy paste afpdb folder to current directory 
     > mv www.physionet.org/physiobank/database/afpdb .
 
+## Go to src folder
+    > cd src
+
 ## Create CSV files 
     > python dat2csv.py
 
