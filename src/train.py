@@ -10,7 +10,7 @@ from sklearn.metrics import precision_score, recall_score, confusion_matrix
 # ************************************* Tensorboard Settings ************************************************
 
 NAME = "atrial"
-tensorboard = TensorBoard(log_dir="logs/{}".format(NAME))
+tensorboard = TensorBoard(log_dir="../logs/{}".format(NAME))
 
 # ************************************* Load Dataset ************************************************
 x_data = np.load('../data/x_data.npy')
