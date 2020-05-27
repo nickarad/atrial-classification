@@ -59,7 +59,7 @@ batch = 16 # define batch size
 model = crm.create_model(learn_rate)
 model.summary()
 history = model.fit(x_train, y_train, epochs=ep,validation_data=(x_test, y_test), callbacks=[tensorboard])
-pd.DataFrame(history.history).to_csv(path_or_buf='logs/History.csv')
+# pd.DataFrame(history.history).to_csv(path_or_buf='logs/History.csv')
 
 # ************************************* Model Accurancy ***************************************************
 val_loss1, val_acc1 = model.evaluate(x_test, y_test)  # evaluate the out of sample data with model

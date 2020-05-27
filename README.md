@@ -5,6 +5,10 @@
 
 ## Install requirements
     > pip install -r requirements.txt
+    > apt-get install python-tk
+
+## Install requirements
+    > pip install -r requirements.txt
 
 ## Download Dataset
     > wget -r -np http://www.physionet.org/physiobank/database/afpdb/
