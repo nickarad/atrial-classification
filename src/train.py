@@ -5,7 +5,7 @@ import createmodel as crm
 import pandas as pd
 import ecg_plot as pl
 from tensorflow.keras.callbacks import TensorBoard
-from sklearn.metrics import precision_score, recall_score, confusion_matrix
+from sklearn.metrics import precision_score, recall_score, confusion_matrix, classification_report
 
 # ************************************* Tensorboard Settings ************************************************
 
@@ -54,7 +54,7 @@ x_test = tf.keras.utils.normalize(x_test, axis = 1)
 
 # ************************************* Create Model ***************************************************
 learn_rate = 0.01 # Define learning rate
-ep = 15 # Number of epochs
+ep = 5 # Number of epochs
 batch = 16 # define batch size
 model = crm.create_model(learn_rate)
 model.summary()
@@ -129,6 +129,8 @@ print(tn, fp, fn, tp)
 tn = float(tn)
 specificity = tn / (tn + fp)
 print("Specificity:", specificity) 
+# Classification Report
+print(classification_report(y_test, y_pred))
 
 # More Details about metrics: https://towardsdatascience.com/accuracy-recall-precision-f-score-specificity-which-to-optimize-on-867d3f11124
 
