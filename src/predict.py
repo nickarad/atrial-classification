@@ -2,15 +2,18 @@ import tensorflow as tf
 from tensorflow import keras
 import ecg_plot as pl
 import numpy as np
-from sklearn.metrics import precision_score, recall_score, confusion_matrix
+from sklearn.metrics import precision_score, recall_score, confusion_matrix, classification_report
+from sklearn.model_selection import train_test_split
+
 # ================== Load weights from checkpoint and re-evaluate ===========================
 x_data = np.load('../data/x_data.npy')
 y_data = np.load('../data/y_data.npy')
-train = 0.7
-size = 200
-x_test = x_data[int(train * size):size]
-y_test = y_data[int(train * size):size]
-print(x_data.shape)
+# train = 0.7
+# size = 200
+# x_test = x_data[int(train * size):size]
+# y_test = y_data[int(train * size):size]
+# print(x_data.shape)
+x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size = 0.3)
 # x_train = tf.keras.utils.normalize(x_train, axis = 1)
 x_test = tf.keras.utils.normalize(x_test, axis = 1)
 new_model = keras.models.load_model('../models/best.h5')
@@ -35,6 +38,10 @@ for x in range(0,len(predictions)):
 	y_pred = np.append(y_pred,np.argmax(predictions[x]))
 	
 y_pred = y_pred.astype(int)
+
+# Classification Report
+print(y_test, y_pred)
+print(classification_report(y_test, y_pred))
 
 # Precision:
 # The precision is the ratio tp / (tp + fp) where tp is the number of true positives and 
