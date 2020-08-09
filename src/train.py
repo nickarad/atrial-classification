@@ -6,6 +6,7 @@ import pandas as pd
 import ecg_plot as pl
 from tensorflow.keras.callbacks import TensorBoard
 from sklearn.metrics import precision_score, recall_score, confusion_matrix, classification_report
+from sklearn.model_selection import train_test_split
 
 # ************************************* Tensorboard Settings ************************************************
 
@@ -15,29 +16,31 @@ tensorboard = TensorBoard(log_dir="../logs/{}".format(NAME))
 # ************************************* Load Dataset ************************************************
 x_data = np.load('../data/x_data.npy')
 y_data = np.load('../data/y_data.npy')
-train = 0.7
-size = 200
-mid = size / 2
+# train = 0.7
+# size = 200
+# mid = size / 2
 
-x_train = np.array([])
-x_train = np.append(x_train,x_data[:int(train * mid)])
-x_train = np.append(x_train,x_data[mid:mid + int(train * mid)])
-x_train = x_train.reshape(-1, 1280)
+# x_train = np.array([])
+# x_train = np.append(x_train,x_data[:int(train * mid)])
+# x_train = np.append(x_train,x_data[mid:mid + int(train * mid)])
+# x_train = x_train.reshape(-1, 1280)
 
-y_train = np.array([])
-y_train = np.append(y_train,y_data[:int(train * mid)])
-y_train = np.append(y_train,y_data[mid:mid + int(train * mid)])
-y_train = y_train.astype(int)
+# y_train = np.array([])
+# y_train = np.append(y_train,y_data[:int(train * mid)])
+# y_train = np.append(y_train,y_data[mid:mid + int(train * mid)])
+# y_train = y_train.astype(int)
 
-x_test = np.array([])
-x_test = np.append(x_test,x_data[int(train * mid):mid])
-x_test = np.append(x_test,x_data[mid + int(train * mid):size])
-x_test = x_test.reshape(-1, 1280)
+# x_test = np.array([])
+# x_test = np.append(x_test,x_data[int(train * mid):mid])
+# x_test = np.append(x_test,x_data[mid + int(train * mid):size])
+# x_test = x_test.reshape(-1, 1280)
 
-y_test = np.array([])
-y_test = np.append(y_test,y_data[int(train * mid):mid])
-y_test = np.append(y_test,y_data[mid + int(train * mid):size])
-y_test = y_test.astype(int)
+# y_test = np.array([])
+# y_test = np.append(y_test,y_data[int(train * mid):mid])
+# y_test = np.append(y_test,y_data[mid + int(train * mid):size])
+# y_test = y_test.astype(int)
+
+x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size = 0.3)
 
 print(x_data.shape)
 print(y_data.shape)
